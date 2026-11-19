@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta name="robots" content="noindex, nofollow">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="theme-color" content="#0B0D12">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>등불 수호단: 글로우그로브 (테스트)</title>
+    <style>
+      :root { --bg: #0B0D12; --ink: #0B0D12; --cream: #EADFC4; --amber: #E8A84A; --slate: #3A4660; --dim: #8A93A8; }
+      html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: var(--bg); color: var(--cream);
+        overscroll-behavior: none; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
+        -webkit-tap-highlight-color: transparent; touch-action: none; }
+      body { font-family: -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", system-ui, sans-serif; }
+      .gk-stage { position: fixed; left: 0; top: 0; width: 100%; height: 100%; display: flex; align-items: center;
+        justify-content: center; background: #05060A; }
+      .gk-stage.framed .gk-canvas { box-shadow: 0 0 0 2px #1C2230, 0 0 0 6px #0B0D12, 0 0 40px 8px rgba(0,0,0,0.85); }
+      .gk-canvas { display: block; background: var(--bg); outline: none; touch-action: none;
+        image-rendering: pixelated; image-rendering: crisp-edges; }
+      .gk-loading { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
+        gap: 18px; background: var(--bg); z-index: 5; }
+      .gk-title { font-size: 22px; font-weight: 700; letter-spacing: 2px; color: var(--amber); text-shadow: 2px 2px 0 #000; }
+      .gk-bar { width: min(70vw, 360px); height: 20px; padding: 4px; background: var(--ink);
+        box-shadow: 0 -4px 0 0 var(--cream), 0 4px 0 0 var(--cream), -4px 0 0 0 var(--cream), 4px 0 0 0 var(--cream); }
+      .gk-fill { height: 100%; width: 0%; background: var(--amber);
+        background-image: repeating-linear-gradient(90deg, transparent 0, transparent 14px, var(--ink) 14px, var(--ink) 18px); }
+      .gk-pct { font-size: 14px; color: var(--dim); letter-spacing: 1px; }
+      .gk-error { display: none; max-width: 80vw; font-size: 14px; color: #E86A5A; text-align: center; line-height: 1.5; white-space: pre-line; }
+      .gk-rotate { position: fixed; inset: 0; display: none; flex-direction: column; align-items: center; justify-content: center;
+        gap: 16px; background: var(--bg); z-index: 10; font-size: 18px; text-align: center; }
+      .gk-rotate .gk-phone { width: 48px; height: 28px; border: 4px solid var(--cream); animation: gk-turn 1.6s steps(2) infinite; }
+      @keyframes gk-turn { 0% { transform: rotate(0deg); } 100% { transform: rotate(90deg); } }
+      /* portrait game: a phone held sideways gets the hint (desktop windows of any shape get the centred portrait frame) */
+      @media (orientation: landscape) and (pointer: coarse) and (max-height: 600px) { .gk-rotate { display: flex; } }
+      .gk-debug { position: fixed; left: 4px; top: 4px; max-width: min(96vw, 900px); max-height: 46vh; overflow: hidden;
+        z-index: 20; display: none; pointer-events: none; padding: 4px 6px; background: rgba(0, 0, 0, 0.78); color: #D8E0F0;
+        font: 11px/1.35 ui-monospace, Menlo, monospace; white-space: pre-wrap; word-break: break-all; }
+      .gk-debug .w { color: #F0C060; }
+      .gk-debug .e { color: #FF7A6A; }
+      .gk-fs { position: fixed; right: 6px; bottom: 6px; width: 26px; height: 26px; padding: 0; border: 0; z-index: 6;
+        background: rgba(11, 13, 18, 0.55); opacity: 0.45; cursor: pointer; display: none; }
+      .gk-fs:hover { opacity: 1; }
+      .gk-fs i { position: absolute; width: 6px; height: 6px; border: 0 solid var(--cream); }
+      .gk-fs i.a { left: 5px; top: 5px; border-left-width: 3px; border-top-width: 3px; }
+      .gk-fs i.b { right: 5px; top: 5px; border-right-width: 3px; border-top-width: 3px; }
+      .gk-fs i.c { left: 5px; bottom: 5px; border-left-width: 3px; border-bottom-width: 3px; }
+      .gk-fs i.d { right: 5px; bottom: 5px; border-right-width: 3px; border-bottom-width: 3px; }
+    </style>
+  </head>
+  <body>
+    <div class="gk-stage" id="gk-stage">
+      <canvas class="gk-canvas" id="unity-canvas" tabindex="-1"></canvas>
+    </div>
+    <div class="gk-loading" id="gk-loading">
+      <div class="gk-title">등불 수호단</div>
+      <div class="gk-bar"><div class="gk-fill" id="gk-fill"></div></div>
+      <div class="gk-pct" id="gk-pct">불러오는 중… 0%</div>
+      <div class="gk-error" id="gk-error"></div>
+    </div>
+    <div class="gk-rotate"><div class="gk-phone"></div><div>화면을 세로로 돌려 주세요</div></div>
+    <div class="gk-debug" id="gk-debug"></div>
+    <button class="gk-fs" id="gk-fs" title="전체 화면" aria-label="전체 화면"><i class="a"></i><i class="b"></i><i class="c"></i><i class="d"></i></button>
+    <script>
+      // Debug box: always collects warnings/errors (page + Unity), shown only with ?debug=1 so testers can screenshot it.
+      (function () {
+        var on = /[?&]debug=1(&|$)/.test(location.search);
+        var box = null, lines = [], MAX = 400;
+        function render() {
+          if (!on) return;
+          box = box || document.getElementById("gk-debug");
+          if (!box) return;
+          box.style.display = "block";
+          box.innerHTML = "";
+          for (var i = 0; i < lines.length; i++) {
+            if (lines[i][0] === "log" && !/GK_|Exception|rror/.test(lines[i][1])) continue;   // the box shows warnings/errors + GK_ lines
+            var d = document.createElement("div");
+            d.className = lines[i][0] === "error" ? "e" : (lines[i][0] === "warn" ? "w" : "");
+            d.textContent = lines[i][1];
+            box.appendChild(d);
+          }
+          box.scrollTop = box.scrollHeight;
+        }
+        window.gkDebugLines = lines;
+        window.gkDebugLog = function (kind, text) {
+          var t = new Date();
+          var ts = ("0" + t.getMinutes()).slice(-2) + ":" + ("0" + t.getSeconds()).slice(-2);
+          var t2 = String(text);
+          if (kind !== "error") t2 = t2.split("\n")[0];      // logs / warnings: first line only (no Unity stack dump)
+          lines.push([kind, ts + " " + t2.slice(0, 2000)]);
+          window.gkCounts = window.gkCounts || { log: 0, warn: 0, error: 0 };
+          window.gkCounts[kind] = (window.gkCounts[kind] || 0) + 1;   // totals survive the 400-line cap
+          while (lines.length > MAX) lines.shift();
+          if (on) { if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", render, { once: true }); else render(); }
+        };
+        window.addEventListener("error", function (e) {
+          if (window.gkAudioDeviceIssue && window.gkAudioDeviceIssue(e.message)) { window.gkAudioDeviceNotes++; window.gkDebugLog("log", "GK_WEB_AUDIO_DEVICE " + e.message); return; }
+          window.gkDebugLog("error", "[page] " + (e.message || e) + (e.filename ? " @" + e.filename.split("/").pop() + ":" + e.lineno : ""));
+        });
+        // The browser refusing to start the audio output (Safari: 「InvalidStateError: Failed to start the audio device」 when the
+        // device is busy/absent) is not a game error: the game keeps running silently and audio starts on a later tap.
+        window.gkAudioDeviceIssue = function (m) { return /Failed to start the audio device|audio device|AudioContext/i.test(String(m || "")); };
+        window.gkAudioDeviceNotes = 0;
+        window.addEventListener("unhandledrejection", function (e) {
+          var r = e.reason, m = r && (r.stack || r.message) || r;
+          if (window.gkAudioDeviceIssue(m)) { window.gkAudioDeviceNotes++; window.gkDebugLog("log", "GK_WEB_AUDIO_DEVICE " + String(m).split("\n")[0]); e.preventDefault(); return; }
+          window.gkDebugLog("error", "[promise] " + m);
+        });
+        ["error", "warn"].forEach(function (k) {
+          var orig = console[k];
+          console[k] = function () {
+            try { window.gkDebugLog(k, Array.prototype.map.call(arguments, String).join(" ")); } catch (x) {}
+            return orig.apply(console, arguments);
+          };
+        });
+        // every console.log / info line is collected too (window.gkDebugLines), shown in the box only with ?debug=1
+        // Unity's WebAudio backend prints 「Trying to get length/metadata of sound which is not loaded」 (console.log) once per
+        // clip while the browser is still decoding it asynchronously — engine-internal, harmless; counted in
+        // window.gkAudioDecodeNotes and kept out of the console and the debug lines.
+        window.gkAudioDecodeNotes = 0;
+        var AUDIO_NOTE = /^Trying to get (length|metadata) of sound which is not loaded/;
+        ["log", "info"].forEach(function (k) {
+          var orig = console[k];
+          console[k] = function () {
+            if (typeof arguments[0] === "string" && AUDIO_NOTE.test(arguments[0])) { window.gkAudioDecodeNotes++; return; }
+            try { window.gkDebugLog("log", Array.prototype.map.call(arguments, String).join(" ")); } catch (x) {}
+            return orig.apply(console, arguments);
+          };
+        });
+        window.gkWarnCount = function () { return (window.gkCounts && window.gkCounts.warn) || 0; };
+        // Keep this page out of Safari's back/forward cache: a cached (frozen) game page can keep an IndexedDB write open,
+        // and every later start of the game on this site then hangs at 90 % (browser check 11/17). An unload listener
+        // opts the page out of the cache, so leaving the page ends it (and its storage work) properly.
+        window.addEventListener("unload", function () {});
+        window.gkErrorCount = function () { return (window.gkCounts && window.gkCounts.error) || 0; };
+      })();
+    </script>
+    <script>
+      (function () {
+        var canvas = document.getElementById("unity-canvas");
+        var fill = document.getElementById("gk-fill");
+        var pct = document.getElementById("gk-pct");
+        var loading = document.getElementById("gk-loading");
+        var errBox = document.getElementById("gk-error");
+        var fsBtn = document.getElementById("gk-fs");
+
+        // Portrait frame (Gate 2). Phones (coarse pointer): the canvas fills the window. Desktop / anything else: a centred
+        // portrait frame, height = window height, aspect clamped to 9:21 .. 9:16 (dark surround); a window narrower than
+        // that shrinks the frame by width instead. UiRoot picks an integer pixel scale from the canvas' device-pixel size
+        // (art grid >= 120 x 220), so the canvas only has to cover whole device pixels (no fractional resampling).
+        var MIN_AR = 9 / 21, MAX_AR = 9 / 16, TABLET_MAX_AR = 3 / 4;
+        var stage = document.getElementById("gk-stage");
+        function isPhone() {
+          try { return window.matchMedia && window.matchMedia("(pointer: coarse)").matches && Math.min(screen.width, screen.height) < 820; }
+          catch (e) { return false; }
+        }
+        function layout() {
+          var W = window.innerWidth, H = window.innerHeight;
+          if (!(W > 0 && H > 0)) return;
+          var w = W, h = H, phone = isPhone();
+          if (phone) {
+            stage.classList.remove("framed");
+          } else {
+            var maxAr = (window.matchMedia && window.matchMedia("(pointer: coarse)").matches) ? TABLET_MAX_AR : MAX_AR;
+            if (w / h > maxAr) w = h * maxAr;          // wide window: full height, centred portrait frame
+            else if (w / h < MIN_AR) h = w / MIN_AR;   // very tall + thin window: clamp to 9:21
+            stage.classList.toggle("framed", w < W - 1);
+          }
+          var dpr = window.devicePixelRatio || 1;
+          var pw = Math.max(1, Math.floor(w * dpr)), ph = Math.max(1, Math.floor(h * dpr));
+          canvas.style.width = (pw / dpr) + "px";
+          canvas.style.height = (ph / dpr) + "px";
+        }
+        layout();
+        window.addEventListener("resize", layout);
+        window.addEventListener("orientationchange", function () { setTimeout(layout, 250); });
+        if (window.visualViewport) window.visualViewport.addEventListener("resize", layout);
+        // re-check when the window moves to a display with another devicePixelRatio
+        (function watchDpr() {
+          if (!window.matchMedia) return;
+          var mq = window.matchMedia("(resolution: " + (window.devicePixelRatio || 1) + "dppx)");
+          var on = function () { layout(); watchDpr(); };
+          if (mq.addEventListener) mq.addEventListener("change", on, { once: true });
+        })();
+
+        // no pinch / double-tap zoom or context menu over the game
+        document.addEventListener("gesturestart", function (e) { e.preventDefault(); });
+        document.addEventListener("dblclick", function (e) { e.preventDefault(); });
+        canvas.addEventListener("contextmenu", function (e) { e.preventDefault(); });
+
+        // fullscreen toggle (hidden where the page cannot go fullscreen, e.g. iPhone Safari)
+        var root = document.documentElement;
+        var canFs = !!(document.fullscreenEnabled || document.webkitFullscreenEnabled);
+        function isFs() { return !!(document.fullscreenElement || document.webkitFullscreenElement); }
+        fsBtn.addEventListener("click", function () {
+          try {
+            if (isFs()) { (document.exitFullscreen || document.webkitExitFullscreen).call(document); }
+            else if (root.requestFullscreen) { root.requestFullscreen({ navigationUI: "hide" }); }
+            else if (root.webkitRequestFullscreen) { root.webkitRequestFullscreen(); }
+          } catch (e) {}
+          canvas.focus();
+        });
+
+        function setProgress(p) {
+          var v = Math.max(0, Math.min(1, p));
+          var steps = Math.floor(v * 20) * 5;            // chunky 5% steps
+          fill.style.width = steps + "%";
+          pct.textContent = "불러오는 중… " + Math.round(v * 100) + "%";
+          if (v >= 0.9 && !window.gkStallTimer) window.gkStallTimer = setTimeout(checkStall, 20000);
+        }
+        // Start watchdog (browser check 11/17): downloads done but no first frame after 20 s -> say why instead of hanging.
+        // The usual cause is the save storage (IndexedDB "/idbfs") not answering, which blocks Unity's file-system mount.
+        function checkStall() {
+          if (window.gkUnity) return;
+          var done = false;
+          function report(reason) {
+            if (done || window.gkUnity) return; done = true;
+            console.error("GK_WEB_STALL " + reason);
+            showError(reason === "idb_stuck"
+              ? "저장 공간(IndexedDB)이 응답하지 않아 시작이 멈췄어요. 이 사이트의 다른 탭을 닫거나 브라우저를 다시 연 뒤 새로 고침해 주세요."
+              : "시작이 멈췄어요 (" + reason + "). 새로 고침해 주세요.");
+          }
+          try {
+            var q = indexedDB.open("/idbfs");
+            q.onblocked = function () { report("idb_blocked"); };
+            q.onerror = function () { report("idb_error"); };
+            q.onsuccess = function () {
+              var db = q.result, names = [].slice.call(db.objectStoreNames);
+              if (!names.length) { db.close(); report("engine_start"); return; }
+              var tx = db.transaction(names, "readonly");
+              tx.oncomplete = function () { db.close(); report("engine_start"); };
+              tx.objectStore(names[0]).count();
+            };
+            setTimeout(function () { report("idb_stuck"); }, 5000);
+          } catch (e) { report("idb_unavailable"); }
+        }
+        function showError(msg) {
+          errBox.style.display = "block";
+          errBox.textContent = "게임을 불러오지 못했어요. 새로 고침해 주세요.\n" + msg;
+          pct.textContent = "";
+        }
+        function banner(msg, type) {
+          if (type === "error") showError(String(msg));
+          else console.warn("[unity]", msg);
+        }
+
+        var buildUrl = "Build";
+        var config = {
+          arguments: [],
+          dataUrl: buildUrl + "/WebGL_pages.data.unityweb",
+          frameworkUrl: buildUrl + "/WebGL_pages.framework.js.unityweb",
+          codeUrl: buildUrl + "/WebGL_pages.wasm.unityweb",
+          streamingAssetsUrl: "StreamingAssets",
+          companyName: "Bummoyeon",
+          productName: "Glowgrove Keepers",
+          productVersion: "0.1.0",
+          showBanner: banner,
+          // Unity 6: let the loader keep persistentDataPath in IndexedDB (replaces the deprecated JS_FileSystem_Sync path);
+          // GK_Web_SyncFs still forces an immediate flush after every save
+          autoSyncPersistentDataPath: true,
+          // Unity's loader calls this before its alert(): an audio-device refusal must not stop the game (see above)
+          errorHandler: function (message) { return window.gkAudioDeviceIssue(message); }
+        };
+
+        var t0 = (window.performance && performance.now) ? performance.now() : Date.now();
+        var script = document.createElement("script");
+        script.src = buildUrl + "/WebGL_pages.loader.js";
+        script.onerror = function () { showError("로더 파일을 받지 못했어요."); };
+        script.onload = function () {
+          createUnityInstance(canvas, config, setProgress).then(function (instance) {
+            window.gkUnity = instance;
+            var t1 = (window.performance && performance.now) ? performance.now() : Date.now();
+            window.gkLoadMs = Math.round(t1 - t0);
+            console.log("GK_WEB_LOADED ms=" + window.gkLoadMs);
+            loading.style.display = "none";
+            if (canFs) fsBtn.style.display = "block";
+            layout();
+            canvas.focus();
+          }).catch(function (message) { showError(String(message)); });
+        };
+        document.body.appendChild(script);
+      })();
+    </script>
+  </body>
+</html>
