@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="es">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex"><title>Probabilidades · Lantern Keepers: Glowgrove</title><style>
+:root { color-scheme: light; }
+body { margin: 0; background: #fafaf7; color: #1d1d1b; font: 17px/1.75 -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", system-ui, sans-serif; }
+main { max-width: 720px; margin: 0 auto; padding: 32px 20px 64px; }
+h1 { font-size: 28px; line-height: 1.3; margin: 0 0 12px; }
+h2 { font-size: 21px; line-height: 1.4; margin: 40px 0 8px; padding-top: 12px; border-top: 1px solid #ddd9cf; }
+h3 { font-size: 17px; margin: 24px 0 6px; }
+p, li { margin: 6px 0; }
+.lead { color: #44423d; }
+.draft { display: inline-block; background: #fff3cd; border: 1px solid #e0c36c; color: #5c4600; padding: 2px 10px; border-radius: 4px; font-weight: 600; }
+table { border-collapse: collapse; width: 100%; margin: 8px 0 12px; font-size: 16px; }
+th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid #e4e1d8; vertical-align: top; }
+th { background: #f0eee7; font-weight: 600; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+details { margin: 4px 0; } summary { cursor: pointer; }
+.muted { color: #66635c; font-size: 15px; }
+a { color: #1f5fa8; }
+</style></head>
+<body><main>
+<nav class="lang"><a href="odds.html">한국어</a> · <a href="odds_en.html">English</a> · <a href="odds_ja.html">日本語</a> · <a href="odds_zh_hant.html">繁體中文</a> · <a href="odds_zh_hans.html">简体中文</a> · <a href="odds_es.html">Español</a></nav>
+<h1>Probabilidades · Lantern Keepers: Glowgrove</h1>
+<p class="muted">Version odds-2.214f41 · Publicado: 2026-11-19 (hora de Corea)</p>
+<p class="lead">En el Juego hay tres resultados aleatorios: encender el faro (equipo), invocar guardianes y selecciones limitadas. Las tablas numéricas se generan a partir de los datos del Juego.</p>
+<p class="lead">Las cuentas nuevas de la versión gratuita de prueba 1.1 reciben 30 boletos de invocación estándar, aparte de las 30 ascuas iniciales del faro. La tienda de pago está desactivada y no se pueden comprar boletos.</p>
+<ul class="toc"><li><a href="#lighthouse">Encender el faro</a></li><li><a href="#standard">Invocación de guardianes</a></li><li><a href="#pickup">Selección limitada</a></li><li><a href="#notes">Reglas generales</a></li></ul>
+<h2 id="lighthouse">Encender el faro</h2>
+<p>Una tirada cuesta 1 ascua y da 1 pieza de equipo. Los 8 espacios (arma, casco, armadura, guantes, botas, collar, anillo, farol) tienen un 12,5% cada uno; el nivel del objeto está entre la mejor etapa superada ±3, con igual probabilidad para cada valor.</p>
+<h3>Probabilidad de rareza por nivel del faro</h3>
+<table><thead><tr><th>Nivel</th><th class="num">Común</th><th class="num">Poco común</th><th class="num">Raro</th><th class="num">Épico</th><th class="num">Legendario</th><th class="num">Mítico</th><th class="num">Inmortal</th></tr></thead><tbody>
+<tr><td>1</td><td class="num">70.00%</td><td class="num">25.00%</td><td class="num">5.00%</td><td class="num">0.00%</td><td class="num">0.00%</td><td class="num">0.00%</td><td class="num">0.00%</td></tr>
+<tr><td>2</td><td class="num">60.00%</td><td class="num">29.00%</td><td class="num">9.50%</td><td class="num">1.50%</td><td class="num">0.00%</td><td class="num">0.00%</td><td class="num">0.00%</td></tr>
+<tr><td>3</td><td class="num">50.00%</td><td class="num">33.00%</td><td class="num">14.00%</td><td class="num">3.00%</td><td class="num">0.00%</td><td class="num">0.00%</td><td class="num">0.00%</td></tr>
+<tr><td>4</td><td class="num">42.00%</td><td class="num">34.50%</td><td class="num">17.50%</td><td class="num">5.50%</td><td class="num">0.50%</td><td class="num">0.00%</td><td class="num">0.00%</td></tr>
+<tr><td>5</td><td class="num">34.00%</td><td class="num">36.00%</td><td class="num">21.00%</td><td class="num">8.00%</td><td class="num">1.00%</td><td class="num">0.00%</td><td class="num">0.00%</td></tr>
+<tr><td>6</td><td class="num">28.67%</td><td class="num">34.66%</td><td class="num">23.33%</td><td class="num">10.67%</td><td class="num">2.50%</td><td class="num">0.17%</td><td class="num">0.00%</td></tr>
+<tr><td>7</td><td class="num">23.33%</td><td class="num">33.34%</td><td class="num">25.67%</td><td class="num">13.33%</td><td class="num">4.00%</td><td class="num">0.33%</td><td class="num">0.00%</td></tr>
+<tr><td>8</td><td class="num">18.00%</td><td class="num">32.00%</td><td class="num">28.00%</td><td class="num">16.00%</td><td class="num">5.50%</td><td class="num">0.50%</td><td class="num">0.00%</td></tr>
+<tr><td>9</td><td class="num">15.00%</td><td class="num">29.49%</td><td class="num">28.50%</td><td class="num">18.25%</td><td class="num">7.63%</td><td class="num">1.10%</td><td class="num">0.03%</td></tr>
+<tr><td>10</td><td class="num">12.00%</td><td class="num">27.00%</td><td class="num">29.00%</td><td class="num">20.50%</td><td class="num">9.75%</td><td class="num">1.70%</td><td class="num">0.05%</td></tr>
+<tr><td>11</td><td class="num">9.00%</td><td class="num">24.50%</td><td class="num">29.49%</td><td class="num">22.75%</td><td class="num">11.88%</td><td class="num">2.30%</td><td class="num">0.08%</td></tr>
+<tr><td>12</td><td class="num">6.00%</td><td class="num">22.00%</td><td class="num">30.00%</td><td class="num">25.00%</td><td class="num">14.00%</td><td class="num">2.90%</td><td class="num">0.10%</td></tr>
+<tr><td>13</td><td class="num">4.50%</td><td class="num">19.00%</td><td class="num">29.00%</td><td class="num">26.50%</td><td class="num">16.50%</td><td class="num">4.25%</td><td class="num">0.25%</td></tr>
+<tr><td>14</td><td class="num">3.00%</td><td class="num">16.00%</td><td class="num">28.00%</td><td class="num">28.00%</td><td class="num">19.00%</td><td class="num">5.60%</td><td class="num">0.40%</td></tr>
+<tr><td>15</td><td class="num">1.50%</td><td class="num">13.00%</td><td class="num">27.00%</td><td class="num">29.50%</td><td class="num">21.50%</td><td class="num">6.95%</td><td class="num">0.55%</td></tr>
+<tr><td>16</td><td class="num">0.00%</td><td class="num">10.00%</td><td class="num">26.00%</td><td class="num">31.00%</td><td class="num">24.00%</td><td class="num">8.30%</td><td class="num">0.70%</td></tr>
+<tr><td>17</td><td class="num">0.00%</td><td class="num">8.00%</td><td class="num">23.50%</td><td class="num">30.74%</td><td class="num">26.25%</td><td class="num">10.23%</td><td class="num">1.28%</td></tr>
+<tr><td>18</td><td class="num">0.00%</td><td class="num">6.00%</td><td class="num">21.00%</td><td class="num">30.50%</td><td class="num">28.50%</td><td class="num">12.15%</td><td class="num">1.85%</td></tr>
+<tr><td>19</td><td class="num">0.00%</td><td class="num">4.00%</td><td class="num">18.50%</td><td class="num">30.25%</td><td class="num">30.74%</td><td class="num">14.08%</td><td class="num">2.43%</td></tr>
+<tr><td>20</td><td class="num">0.00%</td><td class="num">2.00%</td><td class="num">16.00%</td><td class="num">30.00%</td><td class="num">33.00%</td><td class="num">16.00%</td><td class="num">3.00%</td></tr>
+<tr><td>21</td><td class="num">0.00%</td><td class="num">1.60%</td><td class="num">14.00%</td><td class="num">28.40%</td><td class="num">34.00%</td><td class="num">18.00%</td><td class="num">4.00%</td></tr>
+<tr><td>22</td><td class="num">0.00%</td><td class="num">1.20%</td><td class="num">12.00%</td><td class="num">26.80%</td><td class="num">35.00%</td><td class="num">20.00%</td><td class="num">5.00%</td></tr>
+<tr><td>23</td><td class="num">0.00%</td><td class="num">0.80%</td><td class="num">10.00%</td><td class="num">25.20%</td><td class="num">36.00%</td><td class="num">22.00%</td><td class="num">6.00%</td></tr>
+<tr><td>24</td><td class="num">0.00%</td><td class="num">0.40%</td><td class="num">8.00%</td><td class="num">23.60%</td><td class="num">37.00%</td><td class="num">24.00%</td><td class="num">7.00%</td></tr>
+<tr><td>25</td><td class="num">0.00%</td><td class="num">0.00%</td><td class="num">6.00%</td><td class="num">22.00%</td><td class="num">38.00%</td><td class="num">26.00%</td><td class="num">8.00%</td></tr>
+</tbody></table>
+<p><b>Garantía inicial del faro</b>: Si en las primeras 10 tiradas no sale un objeto Legendario o superior, la décima da un arma Legendaria (una vez por cuenta).</p>
+<h3>Líneas de atributos e intervalos</h3>
+<p>Cada objeto tiene 1 línea principal y líneas secundarias: Común/Poco común 1, Raro/Épico 2, Legendario/Mítico/Inmortal 3. El atributo principal depende del espacio: arma, guantes, anillo y farol dan ATQ; casco, botas y collar, PV; armadura, DEF.</p>
+<p>Valor principal = valor base del nivel × multiplicador de rareza × 90–110% (uniforme). Multiplicadores: Común ×1,0; Poco común ×1,6; Raro ×2,6; Épico ×4,2; Legendario ×7,0; Mítico ×12,0; Inmortal ×20,0.</p>
+<table><thead><tr><th>Nivel del objeto</th><th class="num">Valor base (atributo principal común)</th></tr></thead><tbody>
+<tr><td>1 *</td><td class="num">25%</td></tr>
+<tr><td>10</td><td class="num">30.8%</td></tr>
+<tr><td>13 *</td><td class="num">33%</td></tr>
+<tr><td>43 *</td><td class="num">50%</td></tr>
+<tr><td>50</td><td class="num">64.3%</td></tr>
+<tr><td>93 *</td><td class="num">300%</td></tr>
+<tr><td>100</td><td class="num">343%</td></tr>
+<tr><td>163 *</td><td class="num">1,150%</td></tr>
+<tr><td>200</td><td class="num">1,620%</td></tr>
+<tr><td>243 *</td><td class="num">2,400%</td></tr>
+<tr><td>300</td><td class="num">4,380%</td></tr>
+<tr><td>383 *</td><td class="num">10,500%</td></tr>
+<tr><td>400</td><td class="num">11,700%</td></tr>
+<tr><td>500</td><td class="num">22,500%</td></tr>
+<tr><td>603 *</td><td class="num">44,000%</td></tr>
+</tbody></table>
+<p>* indica un nivel de referencia. Entre los niveles a y b, el nivel n se calcula por interpolación geométrica: base(n)=base(a)×(base(b)÷base(a))^((n−a)÷(b−a)), redondeado a 3 cifras significativas (por debajo de 1.000, al entero más cercano en unidades de ×100). Todos los niveles no indicados siguen esta fórmula.</p>
+<p>Las líneas secundarias se sortean de una en una según los pesos de la tabla, excluyendo las ya presentes (cada atributo como máximo una vez). ATQ/PV/DEF son una proporción de «valor base × multiplicador de rareza»; los demás usan intervalos uniformes por rareza.</p>
+<table><thead><tr><th>Atributo</th><th class="num">Peso</th><th class="num">Común</th><th class="num">Poco común</th><th class="num">Raro</th><th class="num">Épico</th><th class="num">Legendario</th><th class="num">Mítico</th><th class="num">Inmortal</th></tr></thead><tbody>
+<tr><td>ATK</td><td class="num">20</td><td class="num">15–35% (proporción)</td><td class="num">15–35% (proporción)</td><td class="num">15–35% (proporción)</td><td class="num">15–35% (proporción)</td><td class="num">15–35% (proporción)</td><td class="num">15–35% (proporción)</td><td class="num">15–35% (proporción)</td></tr>
+<tr><td>HP</td><td class="num">20</td><td class="num">15–35% (proporción)</td><td class="num">15–35% (proporción)</td><td class="num">15–35% (proporción)</td><td class="num">15–35% (proporción)</td><td class="num">15–35% (proporción)</td><td class="num">15–35% (proporción)</td><td class="num">15–35% (proporción)</td></tr>
+<tr><td>DEF</td><td class="num">15</td><td class="num">15–35% (proporción)</td><td class="num">15–35% (proporción)</td><td class="num">15–35% (proporción)</td><td class="num">15–35% (proporción)</td><td class="num">15–35% (proporción)</td><td class="num">15–35% (proporción)</td><td class="num">15–35% (proporción)</td></tr>
+<tr><td>Prob. crítico</td><td class="num">10</td><td class="num">0.5%~1.5%</td><td class="num">0.75%~2.25%</td><td class="num">1%~3%</td><td class="num">1.25%~3.75%</td><td class="num">1.5%~4.5%</td><td class="num">1.75%~5.25%</td><td class="num">2%~6%</td></tr>
+<tr><td>Daño crítico</td><td class="num">10</td><td class="num">2%~6%</td><td class="num">3%~9%</td><td class="num">4%~12%</td><td class="num">5%~15%</td><td class="num">6%~18%</td><td class="num">7%~21%</td><td class="num">8%~24%</td></tr>
+<tr><td>Velocidad de ataque</td><td class="num">8</td><td class="num">0.5%~1.5%</td><td class="num">0.75%~2.25%</td><td class="num">1%~3%</td><td class="num">1.25%~3.75%</td><td class="num">1.5%~4.5%</td><td class="num">1.75%~5.25%</td><td class="num">2%~6%</td></tr>
+<tr><td>Daño a jefes</td><td class="num">9</td><td class="num">2%~6%</td><td class="num">3%~9%</td><td class="num">4%~12%</td><td class="num">5%~15%</td><td class="num">6%~18%</td><td class="num">7%~21%</td><td class="num">8%~24%</td></tr>
+<tr><td>Daño de habilidad</td><td class="num">8</td><td class="num">1%~3%</td><td class="num">1.5%~4.5%</td><td class="num">2%~6%</td><td class="num">2.5%~7.5%</td><td class="num">3%~9%</td><td class="num">3.5%~10.5%</td><td class="num">4%~12%</td></tr>
+</tbody></table>
+<h2 id="standard">Invocación de guardianes</h2>
+<p>Precio: 1 tirada = 150 piedras lunares; 10 tiradas = 1.500 (sin descuento). Se usan primero los boletos (1 boleto = 1 tirada). La tirada de 10 no tiene garantía adicional; cada resultado usa las probabilidades siguientes y cuenta para la garantía.</p>
+<table><thead><tr><th>Resultado</th><th class="num">Probabilidad</th><th>Lo que obtiene</th></tr></thead><tbody>
+<tr><td>Fragmentos ×3</td><td class="num">60.00%</td><td>3 fragmentos de un guardián estándar (igual probabilidad; excluye limitados)</td></tr>
+<tr><td>Fragmentos ×6</td><td class="num">28.00%</td><td>6 fragmentos de un guardián estándar (igual probabilidad; excluye limitados)</td></tr>
+<tr><td>Fragmentos ×15</td><td class="num">9.00%</td><td>15 fragmentos de un guardián estándar (igual probabilidad; excluye limitados)</td></tr>
+<tr><td>Se incorpora un guardián</td><td class="num">3.00%</td><td>Se incorpora un guardián estándar no obtenido (igual probabilidad); si ya tiene los 15, recibe 30 fragmentos de uno de ellos</td></tr>
+</tbody></table>
+<p>Los 15 guardianes estándar: Bandi, Bria, Cheondung, Chorong, Hanui, Iseul, Moru, Muk, Narae, Nox, Riz, Songi, Taeyeop, Ullim y Yeonmu.</p>
+<p><b>Garantía</b>: Tras 89 tiradas sin incorporación, la tirada 90 incorpora un guardián. Toda incorporación, garantizada o no, reinicia el contador a 0. Es distinto del contador de la selección limitada.</p>
+<h2 id="pickup">Selección limitada</h2>
+<p>Precio: 1 tirada = 150 piedras lunares; 10 tiradas = 1.500 (sin descuento). Se usan primero los boletos (1 boleto = 1 tirada). La tirada de 10 no tiene garantía adicional; cada resultado usa las probabilidades siguientes y cuenta para la garantía.</p>
+<p><b>Garantía de todos los eventos</b>: Tras 79 tiradas sin resultado limitado (guardián u arma exclusiva), la siguiente da el objetivo limitado elegido. El contador sube con cada resultado no limitado y vuelve a 0 al salir uno limitado. No se reinicia al terminar el evento: pasa al siguiente. Es independiente de la invocación estándar.</p>
+<p><b>Regresos</b>: Un guardián limitado puede regresar como mínimo 120 días (4 meses) después de terminar su evento. Ninguna recompensa exige reunir un conjunto de resultados distintos.</p>
+<h3 id="pickup-0">Spear of the Eclipse · Próximo</h3>
+<p>Periodo: 2026-12-03 00:00–2026-12-17 00:00 (hora de Corea, 14 días). Guardián limitado: Eclipse Nox. Poder del grupo +10%; contra jefes +14%.</p>
+<table><thead><tr><th>Resultado</th><th class="num">Probabilidad</th><th>Lo que obtiene</th></tr></thead><tbody>
+<tr><td>Eclipse Nox</td><td class="num">0.70%</td><td>Eclipse Nox: Se incorpora; si ya lo tiene, recibe 30 fragmentos de ese guardián</td></tr>
+<tr><td>Darkmoon Piercer</td><td class="num">1.00%</td><td>arma exclusiva «Darkmoon Piercer» (atributos debajo)</td></tr>
+<tr><td>Se incorpora un guardián estándar</td><td class="num">2.30%</td><td>Se incorpora un guardián estándar no obtenido (igual probabilidad); si ya tiene los 15, recibe 30 fragmentos de uno de ellos</td></tr>
+<tr><td>Fragmentos ×15</td><td class="num">9.00%</td><td>15 fragmentos de un guardián estándar (igual probabilidad; excluye limitados)</td></tr>
+<tr><td>Fragmentos ×6</td><td class="num">27.00%</td><td>6 fragmentos de un guardián estándar (igual probabilidad; excluye limitados)</td></tr>
+<tr><td>Fragmentos ×3</td><td class="num">60.00%</td><td>3 fragmentos de un guardián estándar (igual probabilidad; excluye limitados)</td></tr>
+</tbody></table>
+<p class="muted">Arma exclusiva «Darkmoon Piercer»: Inmortal; nivel = mejor etapa superada al obtenerla +3, y crece con dicha etapa. Cuatro líneas fijas: ATQ = valor base ×20×280%, daño a jefes +15%, ATQ = valor base ×20×30%, daño crítico +12%. Si es peor que su arma actual, se convierte en oro en vez de equiparse. La primera copia del guardián limitado también trae el cosmético «Eclipse Wings».</p>
+<h3 id="pickup-1">Night of Falling Stars · Próximo</h3>
+<p>Periodo: 2026-12-17 00:00–2026-12-31 00:00 (hora de Corea, 14 días). Guardián limitado: Meteor Hanui. Poder del grupo +14%; contra jefes +19%.</p>
+<table><thead><tr><th>Resultado</th><th class="num">Probabilidad</th><th>Lo que obtiene</th></tr></thead><tbody>
+<tr><td>Meteor Hanui</td><td class="num">0.70%</td><td>Meteor Hanui: Se incorpora; si ya lo tiene, recibe 30 fragmentos de ese guardián</td></tr>
+<tr><td>Shooting-Star Bowstring</td><td class="num">1.00%</td><td>arma exclusiva «Shooting-Star Bowstring» (atributos debajo)</td></tr>
+<tr><td>Se incorpora un guardián estándar</td><td class="num">2.30%</td><td>Se incorpora un guardián estándar no obtenido (igual probabilidad); si ya tiene los 15, recibe 30 fragmentos de uno de ellos</td></tr>
+<tr><td>Fragmentos ×15</td><td class="num">9.00%</td><td>15 fragmentos de un guardián estándar (igual probabilidad; excluye limitados)</td></tr>
+<tr><td>Fragmentos ×6</td><td class="num">27.00%</td><td>6 fragmentos de un guardián estándar (igual probabilidad; excluye limitados)</td></tr>
+<tr><td>Fragmentos ×3</td><td class="num">60.00%</td><td>3 fragmentos de un guardián estándar (igual probabilidad; excluye limitados)</td></tr>
+</tbody></table>
+<p class="muted">Arma exclusiva «Shooting-Star Bowstring»: Inmortal; nivel = mejor etapa superada al obtenerla +3, y crece con dicha etapa. Cuatro líneas fijas: ATQ = valor base ×20×300%, daño a jefes +18%, ATQ = valor base ×20×30%, daño crítico +12%. Si es peor que su arma actual, se convierte en oro en vez de equiparse. La primera copia del guardián limitado también trae el cosmético «Meteor-Shower Aura».</p>
+<h3 id="pickup-2">Blade of Dawnfire · Próximo</h3>
+<p>Periodo: 2026-12-31 00:00–2027-01-14 00:00 (hora de Corea, 14 días). Guardián limitado: Arin of the Flame. Poder del grupo +18%; contra jefes +25%.</p>
+<table><thead><tr><th>Resultado</th><th class="num">Probabilidad</th><th>Lo que obtiene</th></tr></thead><tbody>
+<tr><td>Arin of the Flame</td><td class="num">0.70%</td><td>Arin of the Flame: Se incorpora; si ya lo tiene, recibe 30 fragmentos de ese guardián</td></tr>
+<tr><td>Dawnfire Blade</td><td class="num">1.00%</td><td>arma exclusiva «Dawnfire Blade» (atributos debajo)</td></tr>
+<tr><td>Se incorpora un guardián estándar</td><td class="num">2.30%</td><td>Se incorpora un guardián estándar no obtenido (igual probabilidad); si ya tiene los 15, recibe 30 fragmentos de uno de ellos</td></tr>
+<tr><td>Fragmentos ×15</td><td class="num">9.00%</td><td>15 fragmentos de un guardián estándar (igual probabilidad; excluye limitados)</td></tr>
+<tr><td>Fragmentos ×6</td><td class="num">27.00%</td><td>6 fragmentos de un guardián estándar (igual probabilidad; excluye limitados)</td></tr>
+<tr><td>Fragmentos ×3</td><td class="num">60.00%</td><td>3 fragmentos de un guardián estándar (igual probabilidad; excluye limitados)</td></tr>
+</tbody></table>
+<p class="muted">Arma exclusiva «Dawnfire Blade»: Inmortal; nivel = mejor etapa superada al obtenerla +3, y crece con dicha etapa. Cuatro líneas fijas: ATQ = valor base ×20×320%, daño a jefes +21%, ATQ = valor base ×20×30%, daño crítico +12%. Si es peor que su arma actual, se convierte en oro en vez de equiparse. La primera copia del guardián limitado también trae el cosmético «Dawnfire Wings».</p>
+<h3 id="pickup-3">Veil of the Tide · Próximo</h3>
+<p>Periodo: 2027-01-14 00:00–2027-01-28 00:00 (hora de Corea, 14 días). Guardián limitado: Serin of the Tide. Poder del grupo +22%; contra jefes +32%.</p>
+<table><thead><tr><th>Resultado</th><th class="num">Probabilidad</th><th>Lo que obtiene</th></tr></thead><tbody>
+<tr><td>Serin of the Tide</td><td class="num">0.70%</td><td>Serin of the Tide: Se incorpora; si ya lo tiene, recibe 30 fragmentos de ese guardián</td></tr>
+<tr><td>Flood-Tide Bell Staff</td><td class="num">1.00%</td><td>arma exclusiva «Flood-Tide Bell Staff» (atributos debajo)</td></tr>
+<tr><td>Se incorpora un guardián estándar</td><td class="num">2.30%</td><td>Se incorpora un guardián estándar no obtenido (igual probabilidad); si ya tiene los 15, recibe 30 fragmentos de uno de ellos</td></tr>
+<tr><td>Fragmentos ×15</td><td class="num">9.00%</td><td>15 fragmentos de un guardián estándar (igual probabilidad; excluye limitados)</td></tr>
+<tr><td>Fragmentos ×6</td><td class="num">27.00%</td><td>6 fragmentos de un guardián estándar (igual probabilidad; excluye limitados)</td></tr>
+<tr><td>Fragmentos ×3</td><td class="num">60.00%</td><td>3 fragmentos de un guardián estándar (igual probabilidad; excluye limitados)</td></tr>
+</tbody></table>
+<p class="muted">Arma exclusiva «Flood-Tide Bell Staff»: Inmortal; nivel = mejor etapa superada al obtenerla +3, y crece con dicha etapa. Cuatro líneas fijas: ATQ = valor base ×20×340%, daño a jefes +24%, ATQ = valor base ×20×30%, daño crítico +12%. Si es peor que su arma actual, se convierte en oro en vez de equiparse. La primera copia del guardián limitado también trae el cosmético «Flood-Tide Aura».</p>
+<h2 id="notes">Reglas generales</h2>
+<p>Las probabilidades son los pesos de los datos del Juego (10.000 = 100%), mostrados con dos decimales. No hay ajustes ocultos.</p>
+<p>Los resultados siguen una secuencia aleatoria guardada por cuenta; reintentar o reiniciar el Juego no los cambia.</p>
+<p>El estado (en curso/finalizado/próximo) corresponde a la fecha de publicación. Cuando cambian las probabilidades, se actualizan conjuntamente la tabla del Juego, esta página y la versión.</p>
+<p>Las probabilidades son iguales tanto con boletos de invocación o selección como con piedras lunares.</p>
+</main></body>
+</html>

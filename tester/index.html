@@ -21,6 +21,7 @@
         image-rendering: pixelated; image-rendering: crisp-edges; }
       .gk-loading { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
         gap: 18px; background: var(--bg); z-index: 5; }
+      .gk-lantern { width: 78px; height: 90px; filter: drop-shadow(0 0 18px #e8a84a88); }
       .gk-title { font-size: 22px; font-weight: 700; letter-spacing: 2px; color: var(--amber); text-shadow: 2px 2px 0 #000; }
       .gk-bar { width: min(70vw, 360px); height: 20px; padding: 4px; background: var(--ink);
         box-shadow: 0 -4px 0 0 var(--cream), 0 4px 0 0 var(--cream), -4px 0 0 0 var(--cream), 4px 0 0 0 var(--cream); }
@@ -47,19 +48,27 @@
       .gk-fs i.b { right: 5px; top: 5px; border-right-width: 3px; border-top-width: 3px; }
       .gk-fs i.c { left: 5px; bottom: 5px; border-left-width: 3px; border-bottom-width: 3px; }
       .gk-fs i.d { right: 5px; bottom: 5px; border-right-width: 3px; border-bottom-width: 3px; }
+      .gk-language { position: fixed; top: max(12px, env(safe-area-inset-top)); right: 12px; z-index: 11;
+        padding: 8px 10px; border: 1px solid var(--cream); border-radius: 4px; background: rgba(11,13,18,.92);
+        color: var(--cream); font: 14px/1.2 system-ui, sans-serif; }
     </style>
   </head>
   <body>
+    <select class="gk-language" id="gk-language" aria-label="Language">
+      <option value="ko">한국어</option><option value="en">English</option><option value="ja">Japanese</option>
+      <option value="zh-Hant">Traditional Chinese</option><option value="zh-Hans">Simplified Chinese</option><option value="es">Español</option>
+    </select>
     <div class="gk-stage" id="gk-stage">
       <canvas class="gk-canvas" id="unity-canvas" tabindex="-1"></canvas>
     </div>
     <div class="gk-loading" id="gk-loading">
-      <div class="gk-title">등불 수호단</div>
+      <svg class="gk-lantern" viewBox="0 0 78 90" role="img" aria-label="등불 그림" xmlns="http://www.w3.org/2000/svg"><path fill="#3A4660" d="M31 4h16v7H31zM20 12h38v7H20zM12 20h54v56H12zM20 76h38v8H20z"/><path fill="#EADFC4" d="M20 24h38v44H20z"/><path fill="#E8A84A" d="M24 28h30v36H24z"/><path fill="#fff1ad" d="M33 35h12v22H33z"/><path fill="#3A4660" d="M8 72h62v7H8z"/></svg>
+      <div class="gk-title" id="gk-title">등불 수호단</div>
       <div class="gk-bar"><div class="gk-fill" id="gk-fill"></div></div>
       <div class="gk-pct" id="gk-pct">불러오는 중… 0%</div>
       <div class="gk-error" id="gk-error"></div>
     </div>
-    <div class="gk-rotate"><div class="gk-phone"></div><div>화면을 세로로 돌려 주세요</div></div>
+    <div class="gk-rotate"><div class="gk-phone"></div><div id="gk-rotate-text">화면을 세로로 돌려 주세요</div></div>
     <div class="gk-debug" id="gk-debug"></div>
     <button class="gk-fs" id="gk-fs" title="전체 화면" aria-label="전체 화면"><i class="a"></i><i class="b"></i><i class="c"></i><i class="d"></i></button>
     <script>
@@ -144,6 +153,44 @@
         var loading = document.getElementById("gk-loading");
         var errBox = document.getElementById("gk-error");
         var fsBtn = document.getElementById("gk-fs");
+        var langSelect = document.getElementById("gk-language");
+        var copy = {
+          ko: { title: "등불 수호단", loading: "불러오는 중… ", rotate: "화면을 세로로 돌려 주세요", error: "게임을 불러오지 못했어요. 새로 고침해 주세요.\n", loader: "로더 파일을 받지 못했어요." },
+          en: { title: "Lantern Keepers: Glowgrove", loading: "Loading… ", rotate: "Turn your device upright", error: "The game could not load. Refresh the page.\n", loader: "The loader file could not be downloaded." },
+          ja: { title: "Lantern Keepers: Glowgrove", loading: "読み込み中… ", rotate: "画面を縦向きにしてください", error: "ゲームを読み込めませんでした。ページを再読み込みしてください。\n", loader: "読み込みファイルを取得できませんでした。" },
+          "zh-Hant": { title: "Lantern Keepers: Glowgrove", loading: "載入中… ", rotate: "請將裝置轉為直向", error: "無法載入遊戲。請重新整理頁面。\n", loader: "無法下載載入器檔案。" },
+          "zh-Hans": { title: "Lantern Keepers: Glowgrove", loading: "加载中… ", rotate: "请将设备转为竖屏", error: "无法加载游戏。请刷新页面。\n", loader: "无法下载加载器文件。" },
+          es: { title: "Lantern Keepers: Glowgrove", loading: "Cargando… ", rotate: "Pon el dispositivo en vertical", error: "No se pudo cargar el juego. Actualiza la página.\n", loader: "No se pudo descargar el archivo de carga." }
+        };
+        function normalizeLanguage(value) {
+          var s = String(value || "").toLowerCase();
+          if (s.indexOf("zh") === 0) return /tw|hk|mo|hant/.test(s) ? "zh-Hant" : "zh-Hans";
+          var base = s.split("-")[0];
+          return copy[base] ? base : "en";
+        }
+        var storedLanguage = "";
+        try { storedLanguage = localStorage.getItem("gk.language") || ""; } catch (e) {}
+        var currentLanguage = normalizeLanguage(storedLanguage || (navigator.languages && navigator.languages[0]) || navigator.language);
+        window.gkLanguage = currentLanguage;
+        function applyLanguage(value) {
+          currentLanguage = normalizeLanguage(value);
+          window.gkLanguage = currentLanguage;
+          document.documentElement.lang = currentLanguage;
+          langSelect.value = currentLanguage;
+          document.getElementById("gk-title").textContent = copy[currentLanguage].title;
+          document.getElementById("gk-rotate-text").textContent = copy[currentLanguage].rotate;
+          pct.textContent = copy[currentLanguage].loading + "0%";
+          document.title = copy[currentLanguage].title;
+        }
+        langSelect.addEventListener("change", function () {
+          applyLanguage(langSelect.value);
+          try { localStorage.setItem("gk.language", currentLanguage); } catch (e) {}
+          if (window.gkUnity) location.reload();
+        });
+        applyLanguage(currentLanguage);
+        requestAnimationFrame(function () { requestAnimationFrame(function () {
+          window.gkFirstScreenMs = Math.round(performance.now());
+        }); });
 
         // Portrait frame (Gate 2). Phones (coarse pointer): the canvas fills the window. Desktop / anything else: a centred
         // portrait frame, height = window height, aspect clamped to 9:21 .. 9:16 (dark surround); a window narrower than
@@ -206,7 +253,7 @@
           var v = Math.max(0, Math.min(1, p));
           var steps = Math.floor(v * 20) * 5;            // chunky 5% steps
           fill.style.width = steps + "%";
-          pct.textContent = "불러오는 중… " + Math.round(v * 100) + "%";
+          pct.textContent = copy[currentLanguage].loading + Math.round(v * 100) + "%";
           if (v >= 0.9 && !window.gkStallTimer) window.gkStallTimer = setTimeout(checkStall, 20000);
         }
         // Start watchdog (browser check 11/17): downloads done but no first frame after 20 s -> say why instead of hanging.
@@ -237,7 +284,7 @@
         }
         function showError(msg) {
           errBox.style.display = "block";
-          errBox.textContent = "게임을 불러오지 못했어요. 새로 고침해 주세요.\n" + msg;
+          errBox.textContent = copy[currentLanguage].error + msg;
           pct.textContent = "";
         }
         function banner(msg, type) {
@@ -248,13 +295,13 @@
         var buildUrl = "Build";
         var config = {
           arguments: [],
-          dataUrl: buildUrl + "/WebGL_pages.data.unityweb",
-          frameworkUrl: buildUrl + "/WebGL_pages.framework.js.unityweb",
-          codeUrl: buildUrl + "/WebGL_pages.wasm.unityweb",
+          dataUrl: buildUrl + "/WebGL_pages_110.data.unityweb",
+          frameworkUrl: buildUrl + "/WebGL_pages_110.framework.js.unityweb",
+          codeUrl: buildUrl + "/WebGL_pages_110.wasm.unityweb",
           streamingAssetsUrl: "StreamingAssets",
           companyName: "Bummoyeon",
           productName: "Glowgrove Keepers",
-          productVersion: "0.1.0",
+          productVersion: "1.1.0",
           showBanner: banner,
           // Unity 6: let the loader keep persistentDataPath in IndexedDB (replaces the deprecated JS_FileSystem_Sync path);
           // GK_Web_SyncFs still forces an immediate flush after every save
@@ -265,13 +312,14 @@
 
         var t0 = (window.performance && performance.now) ? performance.now() : Date.now();
         var script = document.createElement("script");
-        script.src = buildUrl + "/WebGL_pages.loader.js";
-        script.onerror = function () { showError("로더 파일을 받지 못했어요."); };
+        script.src = buildUrl + "/WebGL_pages_110.loader.js";
+        script.onerror = function () { showError(copy[currentLanguage].loader); };
         script.onload = function () {
           createUnityInstance(canvas, config, setProgress).then(function (instance) {
             window.gkUnity = instance;
             var t1 = (window.performance && performance.now) ? performance.now() : Date.now();
             window.gkLoadMs = Math.round(t1 - t0);
+            window.gkFullLoadMs = Math.round(t1);
             console.log("GK_WEB_LOADED ms=" + window.gkLoadMs);
             loading.style.display = "none";
             if (canFs) fsBtn.style.display = "block";

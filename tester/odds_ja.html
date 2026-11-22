@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="ja">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex"><title>確率情報 · Lantern Keepers: Glowgrove</title><style>
+:root { color-scheme: light; }
+body { margin: 0; background: #fafaf7; color: #1d1d1b; font: 17px/1.75 -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", system-ui, sans-serif; }
+main { max-width: 720px; margin: 0 auto; padding: 32px 20px 64px; }
+h1 { font-size: 28px; line-height: 1.3; margin: 0 0 12px; }
+h2 { font-size: 21px; line-height: 1.4; margin: 40px 0 8px; padding-top: 12px; border-top: 1px solid #ddd9cf; }
+h3 { font-size: 17px; margin: 24px 0 6px; }
+p, li { margin: 6px 0; }
+.lead { color: #44423d; }
+.draft { display: inline-block; background: #fff3cd; border: 1px solid #e0c36c; color: #5c4600; padding: 2px 10px; border-radius: 4px; font-weight: 600; }
+table { border-collapse: collapse; width: 100%; margin: 8px 0 12px; font-size: 16px; }
+th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid #e4e1d8; vertical-align: top; }
+th { background: #f0eee7; font-weight: 600; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+details { margin: 4px 0; } summary { cursor: pointer; }
+.muted { color: #66635c; font-size: 15px; }
+a { color: #1f5fa8; }
+</style></head>
+<body><main>
+<nav class="lang"><a href="odds.html">한국어</a> · <a href="odds_en.html">English</a> · <a href="odds_ja.html">日本語</a> · <a href="odds_zh_hant.html">繁體中文</a> · <a href="odds_zh_hans.html">简体中文</a> · <a href="odds_es.html">Español</a></nav>
+<h1>確率情報 · Lantern Keepers: Glowgrove</h1>
+<p class="muted">Version odds-2.214f41 · 公開日：2026-11-19（韓国時間）</p>
+<p class="lead">灯台の点灯（装備）、守護者召喚、期間限定ピックアップの3種類が確率で決まります。以下の数値表はゲームのデータから生成されたものです。</p>
+<p class="lead">1.1無料体験版の新規アカウントには標準守護者の召喚チケット30枚を最初に付与します。灯台用の灯火30個とは別です。有料ストアは無効で、チケット購入はできません。</p>
+<ul class="toc"><li><a href="#lighthouse">灯台の点灯</a></li><li><a href="#standard">守護者召喚</a></li><li><a href="#pickup">期間限定ピックアップ</a></li><li><a href="#notes">共通の規則</a></li></ul>
+<h2 id="lighthouse">灯台の点灯</h2>
+<p>1回＝灯火1個で装備1個を獲得します。8部位（武器、兜、鎧、手袋、靴、首飾り、指輪、ランタン）は各12.5%。装備レベルは最高クリアステージ±3の範囲で、各値は同じ確率です。</p>
+<h3>レベル別レア度確率</h3>
+<table><thead><tr><th>レベル</th><th class="num">一般</th><th class="num">高級</th><th class="num">レア</th><th class="num">英雄</th><th class="num">伝説</th><th class="num">神話</th><th class="num">不滅</th></tr></thead><tbody>
+<tr><td>1</td><td class="num">70.00%</td><td class="num">25.00%</td><td class="num">5.00%</td><td class="num">0.00%</td><td class="num">0.00%</td><td class="num">0.00%</td><td class="num">0.00%</td></tr>
+<tr><td>2</td><td class="num">60.00%</td><td class="num">29.00%</td><td class="num">9.50%</td><td class="num">1.50%</td><td class="num">0.00%</td><td class="num">0.00%</td><td class="num">0.00%</td></tr>
+<tr><td>3</td><td class="num">50.00%</td><td class="num">33.00%</td><td class="num">14.00%</td><td class="num">3.00%</td><td class="num">0.00%</td><td class="num">0.00%</td><td class="num">0.00%</td></tr>
+<tr><td>4</td><td class="num">42.00%</td><td class="num">34.50%</td><td class="num">17.50%</td><td class="num">5.50%</td><td class="num">0.50%</td><td class="num">0.00%</td><td class="num">0.00%</td></tr>
+<tr><td>5</td><td class="num">34.00%</td><td class="num">36.00%</td><td class="num">21.00%</td><td class="num">8.00%</td><td class="num">1.00%</td><td class="num">0.00%</td><td class="num">0.00%</td></tr>
+<tr><td>6</td><td class="num">28.67%</td><td class="num">34.66%</td><td class="num">23.33%</td><td class="num">10.67%</td><td class="num">2.50%</td><td class="num">0.17%</td><td class="num">0.00%</td></tr>
+<tr><td>7</td><td class="num">23.33%</td><td class="num">33.34%</td><td class="num">25.67%</td><td class="num">13.33%</td><td class="num">4.00%</td><td class="num">0.33%</td><td class="num">0.00%</td></tr>
+<tr><td>8</td><td class="num">18.00%</td><td class="num">32.00%</td><td class="num">28.00%</td><td class="num">16.00%</td><td class="num">5.50%</td><td class="num">0.50%</td><td class="num">0.00%</td></tr>
+<tr><td>9</td><td class="num">15.00%</td><td class="num">29.49%</td><td class="num">28.50%</td><td class="num">18.25%</td><td class="num">7.63%</td><td class="num">1.10%</td><td class="num">0.03%</td></tr>
+<tr><td>10</td><td class="num">12.00%</td><td class="num">27.00%</td><td class="num">29.00%</td><td class="num">20.50%</td><td class="num">9.75%</td><td class="num">1.70%</td><td class="num">0.05%</td></tr>
+<tr><td>11</td><td class="num">9.00%</td><td class="num">24.50%</td><td class="num">29.49%</td><td class="num">22.75%</td><td class="num">11.88%</td><td class="num">2.30%</td><td class="num">0.08%</td></tr>
+<tr><td>12</td><td class="num">6.00%</td><td class="num">22.00%</td><td class="num">30.00%</td><td class="num">25.00%</td><td class="num">14.00%</td><td class="num">2.90%</td><td class="num">0.10%</td></tr>
+<tr><td>13</td><td class="num">4.50%</td><td class="num">19.00%</td><td class="num">29.00%</td><td class="num">26.50%</td><td class="num">16.50%</td><td class="num">4.25%</td><td class="num">0.25%</td></tr>
+<tr><td>14</td><td class="num">3.00%</td><td class="num">16.00%</td><td class="num">28.00%</td><td class="num">28.00%</td><td class="num">19.00%</td><td class="num">5.60%</td><td class="num">0.40%</td></tr>
+<tr><td>15</td><td class="num">1.50%</td><td class="num">13.00%</td><td class="num">27.00%</td><td class="num">29.50%</td><td class="num">21.50%</td><td class="num">6.95%</td><td class="num">0.55%</td></tr>
+<tr><td>16</td><td class="num">0.00%</td><td class="num">10.00%</td><td class="num">26.00%</td><td class="num">31.00%</td><td class="num">24.00%</td><td class="num">8.30%</td><td class="num">0.70%</td></tr>
+<tr><td>17</td><td class="num">0.00%</td><td class="num">8.00%</td><td class="num">23.50%</td><td class="num">30.74%</td><td class="num">26.25%</td><td class="num">10.23%</td><td class="num">1.28%</td></tr>
+<tr><td>18</td><td class="num">0.00%</td><td class="num">6.00%</td><td class="num">21.00%</td><td class="num">30.50%</td><td class="num">28.50%</td><td class="num">12.15%</td><td class="num">1.85%</td></tr>
+<tr><td>19</td><td class="num">0.00%</td><td class="num">4.00%</td><td class="num">18.50%</td><td class="num">30.25%</td><td class="num">30.74%</td><td class="num">14.08%</td><td class="num">2.43%</td></tr>
+<tr><td>20</td><td class="num">0.00%</td><td class="num">2.00%</td><td class="num">16.00%</td><td class="num">30.00%</td><td class="num">33.00%</td><td class="num">16.00%</td><td class="num">3.00%</td></tr>
+<tr><td>21</td><td class="num">0.00%</td><td class="num">1.60%</td><td class="num">14.00%</td><td class="num">28.40%</td><td class="num">34.00%</td><td class="num">18.00%</td><td class="num">4.00%</td></tr>
+<tr><td>22</td><td class="num">0.00%</td><td class="num">1.20%</td><td class="num">12.00%</td><td class="num">26.80%</td><td class="num">35.00%</td><td class="num">20.00%</td><td class="num">5.00%</td></tr>
+<tr><td>23</td><td class="num">0.00%</td><td class="num">0.80%</td><td class="num">10.00%</td><td class="num">25.20%</td><td class="num">36.00%</td><td class="num">22.00%</td><td class="num">6.00%</td></tr>
+<tr><td>24</td><td class="num">0.00%</td><td class="num">0.40%</td><td class="num">8.00%</td><td class="num">23.60%</td><td class="num">37.00%</td><td class="num">24.00%</td><td class="num">7.00%</td></tr>
+<tr><td>25</td><td class="num">0.00%</td><td class="num">0.00%</td><td class="num">6.00%</td><td class="num">22.00%</td><td class="num">38.00%</td><td class="num">26.00%</td><td class="num">8.00%</td></tr>
+</tbody></table>
+<p><b>初回の灯台保証</b>: 最初の10回で伝説以上が出なければ、10回目は伝説の武器になります（アカウントごとに1回）。</p>
+<h3>能力値の行と範囲</h3>
+<p>能力値は主能力1行と副能力で構成されます。副能力は一般・高級が1行、レア・英雄が2行、伝説・神話・不滅が3行。主能力は部位に応じて決まり、武器/手袋/指輪/ランタンは攻撃力、兜/靴/首飾りはHP、鎧は防御力です。</p>
+<p>主能力値＝装備レベルの基準値×レア度倍率×90～110%（一様分布）。倍率は一般×1.0、高級×1.6、レア×2.6、英雄×4.2、伝説×7.0、神話×12.0、不滅×20.0です。</p>
+<table><thead><tr><th>装備レベル</th><th class="num">基準値（一般の主能力）</th></tr></thead><tbody>
+<tr><td>1 *</td><td class="num">25%</td></tr>
+<tr><td>10</td><td class="num">30.8%</td></tr>
+<tr><td>13 *</td><td class="num">33%</td></tr>
+<tr><td>43 *</td><td class="num">50%</td></tr>
+<tr><td>50</td><td class="num">64.3%</td></tr>
+<tr><td>93 *</td><td class="num">300%</td></tr>
+<tr><td>100</td><td class="num">343%</td></tr>
+<tr><td>163 *</td><td class="num">1,150%</td></tr>
+<tr><td>200</td><td class="num">1,620%</td></tr>
+<tr><td>243 *</td><td class="num">2,400%</td></tr>
+<tr><td>300</td><td class="num">4,380%</td></tr>
+<tr><td>383 *</td><td class="num">10,500%</td></tr>
+<tr><td>400</td><td class="num">11,700%</td></tr>
+<tr><td>500</td><td class="num">22,500%</td></tr>
+<tr><td>603 *</td><td class="num">44,000%</td></tr>
+</tbody></table>
+<p>*は基準レベルです。2つの基準レベルa,bの間のnは等比補間：base(n)=base(a)×(base(b)÷base(a))^((n−a)÷(b−a))。有効数字3桁（1,000未満は×100単位の整数）に丸めます。表にないレベルもこの式で求めます。</p>
+<p>副能力は表の重みに従い1行ずつ抽選します。すでに付いた能力は除外し、各能力は最大1回です。攻撃力/HP/防御力は「基準値×レア度倍率」に対する割合で、その他はレア度別の下記範囲から一様に選びます。</p>
+<table><thead><tr><th>能力</th><th class="num">重み</th><th class="num">一般</th><th class="num">高級</th><th class="num">レア</th><th class="num">英雄</th><th class="num">伝説</th><th class="num">神話</th><th class="num">不滅</th></tr></thead><tbody>
+<tr><td>ATK</td><td class="num">20</td><td class="num">15～35%（割合）</td><td class="num">15～35%（割合）</td><td class="num">15～35%（割合）</td><td class="num">15～35%（割合）</td><td class="num">15～35%（割合）</td><td class="num">15～35%（割合）</td><td class="num">15～35%（割合）</td></tr>
+<tr><td>HP</td><td class="num">20</td><td class="num">15～35%（割合）</td><td class="num">15～35%（割合）</td><td class="num">15～35%（割合）</td><td class="num">15～35%（割合）</td><td class="num">15～35%（割合）</td><td class="num">15～35%（割合）</td><td class="num">15～35%（割合）</td></tr>
+<tr><td>DEF</td><td class="num">15</td><td class="num">15～35%（割合）</td><td class="num">15～35%（割合）</td><td class="num">15～35%（割合）</td><td class="num">15～35%（割合）</td><td class="num">15～35%（割合）</td><td class="num">15～35%（割合）</td><td class="num">15～35%（割合）</td></tr>
+<tr><td>会心率</td><td class="num">10</td><td class="num">0.5%~1.5%</td><td class="num">0.75%~2.25%</td><td class="num">1%~3%</td><td class="num">1.25%~3.75%</td><td class="num">1.5%~4.5%</td><td class="num">1.75%~5.25%</td><td class="num">2%~6%</td></tr>
+<tr><td>会心ダメージ</td><td class="num">10</td><td class="num">2%~6%</td><td class="num">3%~9%</td><td class="num">4%~12%</td><td class="num">5%~15%</td><td class="num">6%~18%</td><td class="num">7%~21%</td><td class="num">8%~24%</td></tr>
+<tr><td>攻撃速度</td><td class="num">8</td><td class="num">0.5%~1.5%</td><td class="num">0.75%~2.25%</td><td class="num">1%~3%</td><td class="num">1.25%~3.75%</td><td class="num">1.5%~4.5%</td><td class="num">1.75%~5.25%</td><td class="num">2%~6%</td></tr>
+<tr><td>ボスダメージ</td><td class="num">9</td><td class="num">2%~6%</td><td class="num">3%~9%</td><td class="num">4%~12%</td><td class="num">5%~15%</td><td class="num">6%~18%</td><td class="num">7%~21%</td><td class="num">8%~24%</td></tr>
+<tr><td>スキルダメージ</td><td class="num">8</td><td class="num">1%~3%</td><td class="num">1.5%~4.5%</td><td class="num">2%~6%</td><td class="num">2.5%~7.5%</td><td class="num">3%~9%</td><td class="num">3.5%~10.5%</td><td class="num">4%~12%</td></tr>
+</tbody></table>
+<h2 id="standard">守護者召喚</h2>
+<p>価格：1回150月光石、10回1,500月光石（割引なし）。召喚チケットを先に使います（1枚＝1回）。10連の追加保証はなく、各回は以下の確率と天井回数に従います。</p>
+<table><thead><tr><th>結果</th><th class="num">確率</th><th>獲得内容</th></tr></thead><tbody>
+<tr><td>欠片×3</td><td class="num">60.00%</td><td>標準守護者から1人を均等に選び欠片3個（限定守護者を除く）</td></tr>
+<tr><td>欠片×6</td><td class="num">28.00%</td><td>標準守護者から1人を均等に選び欠片6個（限定守護者を除く）</td></tr>
+<tr><td>欠片×15</td><td class="num">9.00%</td><td>標準守護者から1人を均等に選び欠片15個（限定守護者を除く）</td></tr>
+<tr><td>守護者加入</td><td class="num">3.00%</td><td>未所持の標準守護者が均等な確率で1人加入。15人全員所持時は標準守護者1人に欠片30個</td></tr>
+</tbody></table>
+<p>標準守護者15名：Bandi、Bria、Cheondung、Chorong、Hanui、Iseul、Moru、Muk、Narae、Nox、Riz、Songi、Taeyeop、Ullim、Yeonmu。</p>
+<p><b>保証</b>: 89回加入がなければ90回目は守護者が加入します。加入すると保証によるものを含めカウンターは0に戻ります。このカウンターは期間限定ピックアップと別です。</p>
+<h2 id="pickup">期間限定ピックアップ</h2>
+<p>価格：1回150月光石、10回1,500月光石（割引なし）。召喚チケットを先に使います（1枚＝1回）。10連の追加保証はなく、各回は以下の確率と天井回数に従います。</p>
+<p><b>全限定バナーの保証</b>: 限定の結果（限定守護者または専用武器）が79回出なければ、次は選択した限定対象（守護者か武器）になります。限定結果以外で1ずつ増え、限定結果が出ると0に戻ります。バナー終了時にはリセットされず次のピックアップへ引き継ぎます。標準召喚のカウンターとは別です。</p>
+<p><b>復刻</b>: 限定守護者の復刻はバナー終了から最短120日（4か月）後です。異なる結果を一式揃えなければ得られない報酬はありません。</p>
+<h3 id="pickup-0">Spear of the Eclipse · 開催予定</h3>
+<p>期間：2026-12-03 00:00～2026-12-17 00:00（韓国時間、14日）。限定守護者：Eclipse Nox。パーティー戦力+10%、ボスに対して+14%。</p>
+<table><thead><tr><th>結果</th><th class="num">確率</th><th>獲得内容</th></tr></thead><tbody>
+<tr><td>Eclipse Nox</td><td class="num">0.70%</td><td>Eclipse Nox：加入。所持済みならその守護者の欠片30個</td></tr>
+<tr><td>Darkmoon Piercer</td><td class="num">1.00%</td><td>専用武器「Darkmoon Piercer」（下記の能力値）</td></tr>
+<tr><td>標準守護者加入</td><td class="num">2.30%</td><td>未所持の標準守護者が均等な確率で1人加入。15人全員所持時は標準守護者1人に欠片30個</td></tr>
+<tr><td>欠片×15</td><td class="num">9.00%</td><td>標準守護者から1人を均等に選び欠片15個（限定守護者を除く）</td></tr>
+<tr><td>欠片×6</td><td class="num">27.00%</td><td>標準守護者から1人を均等に選び欠片6個（限定守護者を除く）</td></tr>
+<tr><td>欠片×3</td><td class="num">60.00%</td><td>標準守護者から1人を均等に選び欠片3個（限定守護者を除く）</td></tr>
+</tbody></table>
+<p class="muted">専用武器「Darkmoon Piercer」：不滅、レベルは獲得時の最高クリアステージ+3で、最高ステージに合わせて成長します。固定能力4行：攻撃力＝基準値×20×280%、ボスダメージ+15%、攻撃力＝基準値×20×30%、会心ダメージ+12%。現在の武器より弱い場合は装備せずゴールドに変換します。限定守護者の初回獲得時には外見装飾「Eclipse Wings」も付属します。</p>
+<h3 id="pickup-1">Night of Falling Stars · 開催予定</h3>
+<p>期間：2026-12-17 00:00～2026-12-31 00:00（韓国時間、14日）。限定守護者：Meteor Hanui。パーティー戦力+14%、ボスに対して+19%。</p>
+<table><thead><tr><th>結果</th><th class="num">確率</th><th>獲得内容</th></tr></thead><tbody>
+<tr><td>Meteor Hanui</td><td class="num">0.70%</td><td>Meteor Hanui：加入。所持済みならその守護者の欠片30個</td></tr>
+<tr><td>Shooting-Star Bowstring</td><td class="num">1.00%</td><td>専用武器「Shooting-Star Bowstring」（下記の能力値）</td></tr>
+<tr><td>標準守護者加入</td><td class="num">2.30%</td><td>未所持の標準守護者が均等な確率で1人加入。15人全員所持時は標準守護者1人に欠片30個</td></tr>
+<tr><td>欠片×15</td><td class="num">9.00%</td><td>標準守護者から1人を均等に選び欠片15個（限定守護者を除く）</td></tr>
+<tr><td>欠片×6</td><td class="num">27.00%</td><td>標準守護者から1人を均等に選び欠片6個（限定守護者を除く）</td></tr>
+<tr><td>欠片×3</td><td class="num">60.00%</td><td>標準守護者から1人を均等に選び欠片3個（限定守護者を除く）</td></tr>
+</tbody></table>
+<p class="muted">専用武器「Shooting-Star Bowstring」：不滅、レベルは獲得時の最高クリアステージ+3で、最高ステージに合わせて成長します。固定能力4行：攻撃力＝基準値×20×300%、ボスダメージ+18%、攻撃力＝基準値×20×30%、会心ダメージ+12%。現在の武器より弱い場合は装備せずゴールドに変換します。限定守護者の初回獲得時には外見装飾「Meteor-Shower Aura」も付属します。</p>
+<h3 id="pickup-2">Blade of Dawnfire · 開催予定</h3>
+<p>期間：2026-12-31 00:00～2027-01-14 00:00（韓国時間、14日）。限定守護者：Arin of the Flame。パーティー戦力+18%、ボスに対して+25%。</p>
+<table><thead><tr><th>結果</th><th class="num">確率</th><th>獲得内容</th></tr></thead><tbody>
+<tr><td>Arin of the Flame</td><td class="num">0.70%</td><td>Arin of the Flame：加入。所持済みならその守護者の欠片30個</td></tr>
+<tr><td>Dawnfire Blade</td><td class="num">1.00%</td><td>専用武器「Dawnfire Blade」（下記の能力値）</td></tr>
+<tr><td>標準守護者加入</td><td class="num">2.30%</td><td>未所持の標準守護者が均等な確率で1人加入。15人全員所持時は標準守護者1人に欠片30個</td></tr>
+<tr><td>欠片×15</td><td class="num">9.00%</td><td>標準守護者から1人を均等に選び欠片15個（限定守護者を除く）</td></tr>
+<tr><td>欠片×6</td><td class="num">27.00%</td><td>標準守護者から1人を均等に選び欠片6個（限定守護者を除く）</td></tr>
+<tr><td>欠片×3</td><td class="num">60.00%</td><td>標準守護者から1人を均等に選び欠片3個（限定守護者を除く）</td></tr>
+</tbody></table>
+<p class="muted">専用武器「Dawnfire Blade」：不滅、レベルは獲得時の最高クリアステージ+3で、最高ステージに合わせて成長します。固定能力4行：攻撃力＝基準値×20×320%、ボスダメージ+21%、攻撃力＝基準値×20×30%、会心ダメージ+12%。現在の武器より弱い場合は装備せずゴールドに変換します。限定守護者の初回獲得時には外見装飾「Dawnfire Wings」も付属します。</p>
+<h3 id="pickup-3">Veil of the Tide · 開催予定</h3>
+<p>期間：2027-01-14 00:00～2027-01-28 00:00（韓国時間、14日）。限定守護者：Serin of the Tide。パーティー戦力+22%、ボスに対して+32%。</p>
+<table><thead><tr><th>結果</th><th class="num">確率</th><th>獲得内容</th></tr></thead><tbody>
+<tr><td>Serin of the Tide</td><td class="num">0.70%</td><td>Serin of the Tide：加入。所持済みならその守護者の欠片30個</td></tr>
+<tr><td>Flood-Tide Bell Staff</td><td class="num">1.00%</td><td>専用武器「Flood-Tide Bell Staff」（下記の能力値）</td></tr>
+<tr><td>標準守護者加入</td><td class="num">2.30%</td><td>未所持の標準守護者が均等な確率で1人加入。15人全員所持時は標準守護者1人に欠片30個</td></tr>
+<tr><td>欠片×15</td><td class="num">9.00%</td><td>標準守護者から1人を均等に選び欠片15個（限定守護者を除く）</td></tr>
+<tr><td>欠片×6</td><td class="num">27.00%</td><td>標準守護者から1人を均等に選び欠片6個（限定守護者を除く）</td></tr>
+<tr><td>欠片×3</td><td class="num">60.00%</td><td>標準守護者から1人を均等に選び欠片3個（限定守護者を除く）</td></tr>
+</tbody></table>
+<p class="muted">専用武器「Flood-Tide Bell Staff」：不滅、レベルは獲得時の最高クリアステージ+3で、最高ステージに合わせて成長します。固定能力4行：攻撃力＝基準値×20×340%、ボスダメージ+24%、攻撃力＝基準値×20×30%、会心ダメージ+12%。現在の武器より弱い場合は装備せずゴールドに変換します。限定守護者の初回獲得時には外見装飾「Flood-Tide Aura」も付属します。</p>
+<h2 id="notes">共通の規則</h2>
+<p>確率はゲームデータの重み（10,000＝100%）を小数点以下2桁で表示したものです。非公開の調整はありません。</p>
+<p>結果はアカウントごとに保存された乱数列に従い、再試行やゲームの再起動では変わりません。</p>
+<p>開催中・終了・開催予定の状態は公開日時点です。確率変更時はゲーム内の表とこのページを同じデータから更新し、版番号も変更します。</p>
+<p>召喚・ピックアップチケットと月光石のどちらを使っても確率は同じです。</p>
+</main></body>
+</html>
